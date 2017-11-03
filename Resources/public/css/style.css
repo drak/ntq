@@ -332,6 +332,7 @@ background-color: #f39900;
 #page2 .col-sm-4 .coremanager-button a:hover,
 #page2 .col-sm-4 .coremanager-button a:focus,
 #page2 .col-sm-4 .coremanager-button a:active {
+color: #42403e;
 background-color: #ffd300;
 }
 
