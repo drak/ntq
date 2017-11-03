@@ -11,7 +11,8 @@ margin-top: 20px;
 a,
 a:hover,
 a:focus,
-a:active {
+a:active,
+.content-form .ui-widget-content a {
 color: #0092d0;
 }
 
@@ -21,19 +22,31 @@ min-height: 200px;
 }
 
 .navbar {
-background-color: #ffffff;
+background-color: #fff;
 border: none;
 height: 105px;
 margin-bottom: 0;
 }
+.navbar-modulelinks {
+height: auto;
+margin-bottom: 28px;
+}
 .navbar .navbar-nav {
 margin-top: 36px;
+}
+.admin-area .navbar .navbar-nav {
+margin-top: 0;
 }
 .navbar .navbar-nav a {
 font-size: 18px;
 font-weight: 700;
 text-transform: uppercase;
 padding-bottom: 5px;
+}
+.admin-area .navbar .navbar-nav a {
+font-size: 13px;
+padding-left: 8px;
+padding-right: 8px;
 }
 body .navbar .navbar-nav > li > a:hover,
 body .navbar .navbar-nav > li > a:active,
@@ -44,6 +57,16 @@ body .navbar .navbar-nav > li.active a:active,
 body .navbar .navbar-nav > li.active a:focus {
 border-bottom: 3px solid #e5352c;
 background-color: transparent;
+}
+body .navbar.navbar-modulelinks .navbar-nav > li {
+border-right-width: 0;
+}
+body .navbar.navbar-modulelinks .navbar-nav > li a,
+body .navbar.navbar-modulelinks .navbar-nav > li a:hover,
+body .navbar.navbar-modulelinks .navbar-nav > li a:focus,
+body .navbar.navbar-modulelinks .navbar-nav > li a:active {
+border-bottom-width: 0;
+text-transform: none;
 }
 body .navbar .navbar-nav > li#menuItem2 > a:hover,
 body .navbar .navbar-nav > li#menuItem2 > a:active,

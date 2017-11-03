@@ -1,4 +1,4 @@
-<div id="bootstrap-theme-main-container" class="container-fluid">
+<div id="bootstrap-theme-main-container" class="container-fluid{% if isAdminArea|default(false) == true %} admin-area{% endif %}">
     {% if isAdminArea|default(false) == true %}
         {{ include('@ZikulaZkSiteTheme/Include/admin_menu.html.twig') }}
     {% else %}
