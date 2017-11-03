@@ -49,10 +49,16 @@
     }
 
     function initFactHeight() {
+        var leftHeadings, rightHeadings;
+
         leftHeadings = $('.col-sm-6 .left h3');
         rightHeadings = $('.col-sm-6 .right h3');
         leftHeadings.eq(0).add(rightHeadings.eq(0)).matchHeight();
         leftHeadings.eq(1).add(rightHeadings.eq(1)).matchHeight();
+    }
+
+    function initDownloadsHeight() {
+        $('#page2 .col-sm-4 .coremanager-button a').matchHeight();
     }
 
     function updateExtensionsList(event) {
@@ -95,7 +101,9 @@
             initFactScreens();
             initFactHeight();
             $(window).resize(initFactHeight);
-            var leftHeadings, rightHeadings;
+        } else if ($('#page2').length > 0) {
+            initDownloadsHeight();
+            $(window).resize(initDownloadsHeight);
         }
 
         $('#vendorList a').tooltip();
