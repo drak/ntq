@@ -41,7 +41,6 @@ margin-bottom: 28px;
 }
 @media (min-width: 768px) {
     .user-area .navbar .navbar-nav {
-        margin-top: 36px;
         float: right;
     }
 }
@@ -57,13 +56,18 @@ margin-top: 25px;
 margin-top: 30px;
 border: none;
 background-color: #fff;
-padding: 0 30px;
+padding: 0 30px 30px;
 }
 .navbar .navbar-nav a {
 font-size: 18px;
 font-weight: 700;
 text-transform: uppercase;
 padding-bottom: 5px;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+    .navbar .navbar-nav a {
+        font-size: 16px;
+    }
 }
 .admin-area .navbar .navbar-nav a {
 font-size: 13px;
