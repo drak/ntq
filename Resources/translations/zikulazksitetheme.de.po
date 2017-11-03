@@ -1,23 +1,47 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: ZkSiteTheme\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Axel Guckelsberger <info@guite.de>\n"
 "Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Ad partners:"
+msgstr "Werbepartner:"
+
+msgid "Back to paginated view"
+msgstr "Zurück zur Seitenansicht"
+
+msgid "Back to the list of articles"
+msgstr "Zurück zur Liste der Artikel"
 
 msgid "Blocks"
 msgstr "Blöcke"
 
+msgid "Create message"
+msgstr "Artikel erstellen"
+
+msgid "Current issues"
+msgstr "Aktuelles"
+
+msgid "Download"
+msgstr "Download"
+
 msgid "Extensions"
 msgstr "Erweiterungen"
+
+msgid "Generate your<br />own modules"
+msgstr "Generiere Deine<br />eigenen Module"
 
 msgid "Groups"
 msgstr "Gruppen"
@@ -25,14 +49,50 @@ msgstr "Gruppen"
 msgid "Home"
 msgstr "Startseite"
 
+msgid "Log out"
+msgstr "Abmelden"
+
+msgid "Message"
+msgstr "Artikel"
+
+msgid "My account"
+msgstr "Mein Konto"
+
+msgid "My messages"
+msgstr "Meine Artikel"
+
+msgid "No other articles found."
+msgstr "Keine anderen Artikel gefunden."
+
 msgid "Permissions"
 msgstr "Zugriffsrechte"
+
+msgid "Related articles"
+msgstr "Ähnliche Artikel"
 
 msgid "Settings"
 msgstr "Einstellungen"
 
+msgid "Show all entries"
+msgstr "Zeige alle Einträge"
+
+msgid "Signed in as"
+msgstr "Angemeldet als"
+
+msgid "Simply create individual extensions"
+msgstr "Individuelle Erweiterungen einfach erzeugen"
+
+msgid "Symfony 2 + Zikula legacy layer"
+msgstr "Symfony 2 + Zikula Legacy-Layer"
+
+msgid "Symfony 3 - current release"
+msgstr "Symfony 3 - aktuelles Release"
+
 msgid "Themes"
 msgstr "Themes"
+
+msgid "Toggle Dropdown"
+msgstr "Dropdown Toggle"
 
 msgid "Users"
 msgstr "Benutzer"

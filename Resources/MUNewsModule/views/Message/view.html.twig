@@ -1,8 +1,8 @@
 {# purpose of this template: messages user list view #}
 {% extends 'MUNewsModule::base.html.twig' %}
 {% block appTitle '' %}
-{#% block title own ? __('My messages') : __('Messages list') %#}
-{% block title own ? __('My messages') : (app.request.locale == 'de' ? 'Aktuelles' : 'News') %}
+{#% block title own ? __('My messages', 'zikulazksitetheme') : __('Messages list', 'zikulazksitetheme') %#}
+{% block title own ? __('My messages', 'zikulazksitetheme') : __('Current issues', 'zikulazksitetheme') %}
 {% block content %}
 <div class="munewsmodule-message munewsmodule-view">
 
@@ -30,7 +30,7 @@
                         {% set thumbOptions = attribute(thumbRuntimeOptions, 'messageImageUpload1') %}
                         <img src="{{ message.imageUpload1.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ message|munewsmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-responsive" />
                     {% else %}
-                        {{ __('Download') }} ({{ message.imageUpload1Meta.size|munewsmodule_fileSize(message.imageUpload1.getPathname(), false, false) }})
+                        {{ __('Download', 'zikulazksitetheme') }} ({{ message.imageUpload1Meta.size|munewsmodule_fileSize(message.imageUpload1.getPathname(), false, false) }})
                     {% endif %}
                     </a>
                 </div>
@@ -56,15 +56,15 @@
     <p>
         {% if canBeCreated %}
             {% if hasPermission('MUNewsModule:Message:', '::', 'ACCESS_COMMENT') %}
-                {% set createTitle = __('Create message') %}
+                {% set createTitle = __('Create message', 'zikulazksitetheme') %}
                 <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'edit') }}" title="{{ createTitle|e('html_attr') }}"><i class="fa fa-plus"></i> {{ createTitle }}</a>
             {% endif %}
         {% endif %}
         {% if all == 1 %}
-            {% set linkTitle = __('Back to paginated view') %}
+            {% set linkTitle = __('Back to paginated view', 'zikulazksitetheme') %}
             <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view') }}" title="{{ linkTitle|e('html_attr') }}"><i class="fa fa-table"></i> {{ linkTitle }}</a>
         {% else %}
-            {% set linkTitle = __('Show all entries') %}
+            {% set linkTitle = __('Show all entries', 'zikulazksitetheme') %}
             <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view', {all: 1}) }}" title="{{ linkTitle|e('html_attr') }}"><i class="fa fa-table"></i> {{ linkTitle }}</a>
         {% endif %}
     </p>

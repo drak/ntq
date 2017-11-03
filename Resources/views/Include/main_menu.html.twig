@@ -16,14 +16,14 @@
                 {{ showblockposition('header') }}
                 {% if currentUser.loggedIn %}
                     <div class="btn-group navbar-right navbar-btn">
-                        <a href="{{ path('zikulausersmodule_account_menu') }}" class="btn btn-default"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ __('Signed in as') }} {{ currentUser.uname }}</a>
+                        <a href="{{ path('zikulausersmodule_account_menu') }}" class="btn btn-default"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ __('Signed in as', 'zikulazksitetheme') }} {{ currentUser.uname }}</a>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="caret"></span>
-                            <span class="sr-only">{{ __('Toggle Dropdown') }}</span>
+                            <span class="sr-only">{{ __('Toggle Dropdown', 'zikulazksitetheme') }}</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('zikulausersmodule_access_logout') }}">{{ __('Log out') }}</a></li>
-                            <li><a href="{{ path('zikulausersmodule_account_menu') }}">{{ __('My Account') }}</a></li>
+                            <li><a href="{{ path('zikulausersmodule_access_logout') }}">{{ __('Log out', 'zikulazksitetheme') }}</a></li>
+                            <li><a href="{{ path('zikulausersmodule_account_menu') }}">{{ __('My account', 'zikulazksitetheme') }}</a></li>
                         </ul>
                     </div>
                 {% endif %}

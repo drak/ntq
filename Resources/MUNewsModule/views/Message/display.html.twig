@@ -2,14 +2,14 @@
 {% set baseTemplate = app.request.query.getBoolean('raw', false) ? 'raw' : 'base' %}
 {% extends 'MUNewsModule::' ~ baseTemplate ~ '.html.twig' %}
 {% block appTitle '' %}
-{% block pageTitle %}{{ message|munewsmodule_formattedTitle|default(__('Message')) }}{% endblock %}
+{% block pageTitle %}{{ message|munewsmodule_formattedTitle|default(__('Message', 'zikulazksitetheme')) }}{% endblock %}
 {% block title %}
-    {% set templateTitle = message|munewsmodule_formattedTitle|default(__('Message')) %}
+    {% set templateTitle = message|munewsmodule_formattedTitle|default(__('Message', 'zikulazksitetheme')) %}
     {{ templateTitle|notifyFilters('munewsmodule.filter_hooks.messages.filter')|safeHtml }}{% if routeArea == 'admin' %} <small>({{ message.workflowState|munewsmodule_objectState(false)|lower }})</small>{% endif %}
     {% if hasPermission('MUNewsModule:Message:', '::', 'ACCESS_EDIT') %}
     {% set itemActions = knp_menu_get('MUNewsModule:ItemActionsMenu:menu', [], {entity: message, area: routeArea, context: 'display'}) %}
     <div class="dropdown">
-        <a id="itemActions{{ message.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions') }} <span class="caret"></span></a>
+        <a id="itemActions{{ message.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions', 'zikulazksitetheme') }} <span class="caret"></span></a>
         {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
     </div>
     {% endif %}
@@ -58,7 +58,7 @@
                         {% set thumbOptions = attribute(thumbRuntimeOptions, 'messageImageUpload2') %}
                         <img src="{{ message.imageUpload2.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ message|munewsmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
                     {% else %}
-                        {{ __('Download') }} ({{ message.imageUpload2Meta.size|munewsmodule_fileSize(message.imageUpload2.getPathname(), false, false) }})
+                        {{ __('Download', 'zikulazksitetheme') }} ({{ message.imageUpload2Meta.size|munewsmodule_fileSize(message.imageUpload2.getPathname(), false, false) }})
                     {% endif %}
                     </a>
                     {% else %}&nbsp;{% endif %}
@@ -73,7 +73,7 @@
                         {% set thumbOptions = attribute(thumbRuntimeOptions, 'messageImageUpload3') %}
                         <img src="{{ message.imageUpload3.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ message|munewsmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
                     {% else %}
-                        {{ __('Download') }} ({{ message.imageUpload3Meta.size|munewsmodule_fileSize(message.imageUpload3.getPathname(), false, false) }})
+                        {{ __('Download', 'zikulazksitetheme') }} ({{ message.imageUpload3Meta.size|munewsmodule_fileSize(message.imageUpload3.getPathname(), false, false) }})
                     {% endif %}
                     </a>
                     {% else %}&nbsp;{% endif %}
@@ -88,7 +88,7 @@
                         {% set thumbOptions = attribute(thumbRuntimeOptions, 'messageImageUpload4') %}
                         <img src="{{ message.imageUpload4.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ message|munewsmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
                     {% else %}
-                        {{ __('Download') }} ({{ message.imageUpload4Meta.size|munewsmodule_fileSize(message.imageUpload4.getPathname(), false, false) }})
+                        {{ __('Download', 'zikulazksitetheme') }} ({{ message.imageUpload4Meta.size|munewsmodule_fileSize(message.imageUpload4.getPathname(), false, false) }})
                     {% endif %}
                     </a>
                     {% else %}&nbsp;{% endif %}
@@ -102,16 +102,16 @@
                     {% if featureActivationHelper.isEnabled(constant('MU\\NewsModule\\Helper\\FeatureActivationHelper::CATEGORIES'), 'message') %}
                         {% set showRelatedArticles = getModVar('MUNewsModule', 'enableMoreMessagesInCategory') %}
                         {% if showRelatedArticles == 1 and message.categories is defined and message.categories|length > 0 %}
-                            <h3>{{ __('Related articles') }}</h3>
+                            <h3>{{ __('Related articles', 'zikulazksitetheme') }}</h3>
                             {% set amountOfRelatedArticles = 3 %}{# TODO make configurable #}
                             {% for catMapping in message.categories %}
                                 <h4>{{ catMapping.category.display_name[app.request.locale]|default(catMapping.category.name) }}</h4>
                                 {% set categoryArticles = munewsmodule_getRelatedArticles(catMapping, amountOfRelatedArticles) %}
                                 <ul class="related-articles-list">
                                 {% for relatedArticle in categoryArticles %}
-                                    <li><a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'display', {'slug': relatedArticle.slug}) }}">{{ relatedArticle|munewsmodule_formattedTitle|default(__('Message')) }}</a></li>
+                                    <li><a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'display', {'slug': relatedArticle.slug}) }}">{{ relatedArticle|munewsmodule_formattedTitle|default(__('Message', 'zikulazksitetheme')) }}</a></li>
                                 {% else %}
-                                    <li>{{ __('No other articles found.') }}</li>
+                                    <li>{{ __('No other articles found.', 'zikulazksitetheme') }}</li>
                                 {% endfor %}
                                 </ul>
                             {% endfor %}
@@ -119,7 +119,7 @@
                             {{ include('@MUNewsModule/Helper/includeCategoriesDisplay.html.twig', {obj: message}) }}
                         {% endif %}
                     {% endif %}
-                    <p><a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view') }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ __('Back to the list of articles') }}</a></p>
+                    <p><a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view') }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ __('Back to the list of articles', 'zikulazksitetheme') }}</a></p>
                 </div>
                 {% set pdfLink = getModVar('MUNewsModule', 'displayPdfLink') %}
                 {% if pdfLink == 1 %}        

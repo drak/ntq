@@ -16,13 +16,13 @@
     {% endif %}
     <div class="container">
         {% if app.request.query.get('pid', 0) == 2 %}
-            {% set currentReleaseBlocks = showblockposition('currentrelease') ~ '<p class="download-description"><small>Symfony 3 - ' ~ (app.request.locale == 'de' ? 'aktuelles Release' : 'current release') ~ '</small></p>' %}
-            {% set legacyReleaseBlocks = showblockposition('legacyrelease') ~ '<p class="download-description"><small>Symfony 2 + Zikula ' ~ (app.request.locale == 'de' ? 'Legacy-Layer' : 'legacy layer') ~ '</small></p>' %}
+            {% set currentReleaseBlocks = showblockposition('currentrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 3 - current release', 'zikulazksitetheme') ~ '</small></p>' %}
+            {% set legacyReleaseBlocks = showblockposition('legacyrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 2 + Zikula legacy layer', 'zikulazksitetheme') ~ '</small></p>' %}
             {% set mostBlock %}
                 <div class="z-block z-blockposition-blockposition z-bkey-most"><div class="coremanager-button">
-                    <a class="btn btn-lg btn-warning" role="button" href="https://modulestudio.de{% if app.request.locale == 'en' %}/en{% endif %}" style="white-space: normal"><i class="fa fa-magic fa-fw fa-3x pull-left"></i> {% if app.request.locale == 'de' %}Generiere Deine<br />eigenen Module{% else %}Generate your<br />own modules{% endif %}</a>
+                    <a class="btn btn-lg btn-warning" role="button" href="https://modulestudio.de{% if app.request.locale == 'en' %}/en{% endif %}" style="white-space: normal"><i class="fa fa-magic fa-fw fa-3x pull-left"></i> {{ __('Generate your<br />own modules', 'zikulazksitetheme')|raw }}</a>
                 </div></div>
-                 <p class="download-description"><small>{{ (app.request.locale == 'de' ? 'Individuelle Erweiterungen einfach erzeugen' : 'Simply create individual extensions') }}</small></p>
+                 <p class="download-description"><small>{{ __('Simply create individual extensions', 'zikulazksitetheme') }}</small></p>
             {% endset %}
             {% set extensionsList = getGitHubRepositories() %}
             {{ maincontent|replace({ '<p>###CURRENT_RELEASE###</p>': currentReleaseBlocks, '<p>###LEGACY_RELEASE###</p>': legacyReleaseBlocks, '<p>###MODULE_STUDIO###</p>': mostBlock, '###GITHUB_REPOSITORIES###': extensionsList })|raw }}
@@ -43,7 +43,7 @@
                         {{ getFollowLinks() }}
                     </div>
                     <div class="col-sm-4 text-center">
-                        {% if app.request.locale == 'de' %}Werbepartner:{% else %}Ad partners:{% endif %} <a href="http://www.onlinebetrug.net/">onlinebetrug</a>
+                        {{ __('Ad partners:', 'zikulazksitetheme') }} <a href="http://www.onlinebetrug.net/">onlinebetrug</a>
                     </div>
                     <div class="col-sm-4 text-right">
                         {{ showblockposition('footerright') }}
