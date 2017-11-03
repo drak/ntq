@@ -7,7 +7,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ pagevars.homepath }}"><img src="{{ zasset('@ZikulaZkSiteTheme:images/logo.gif') }}" title="{{ getModVar('ZConfig', 'sitename')|e('html_attr') }}" alt="{{ getModVar('ZConfig', 'sitename')|e('html_attr') }}" class="img-responsive" /></a>
+{% set sitename = getModVar('ZConfig', 'sitename_' ~ app.request.locale) %}
+                <a class="navbar-brand" href="{{ pagevars.homepath }}"><img src="{{ zasset('@ZikulaZkSiteTheme:images/logo.gif') }}" title="{{ sitename|e('html_attr') }}" alt="{{ sitename|e('html_attr') }}" class="img-responsive" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
