@@ -60,10 +60,10 @@ class ZkSiteExtension extends \Twig_Extension
     {
         $output = '';
         $output .= '<ul class="list-inline">';
-        $output .= '<a href="https://twitter.com/TheZikulan" title="Zikula @ Twitter"><i class="fa fa-fw fa-2x fa-twitter"></i></a>';
-        $output .= '<a href="https://www.facebook.com/zikula" title="Zikula @ Facebook"><i class="fa fa-fw fa-2x fa-facebook"></i></a>';
+        $output .= '<li><a href="https://twitter.com/TheZikulan" title="Zikula @ Twitter"><i class="fa fa-fw fa-2x fa-twitter"></i></a></li>';
+        $output .= '<li><a href="https://www.facebook.com/zikula" title="Zikula @ Facebook"><i class="fa fa-fw fa-2x fa-facebook"></i></a></li>';
         $request = $this->requestStack->getCurrentRequest();
-        $output .= '<a href="/' . (null !== $request ? $request->getLocale() : 'en') . '/news/messages/view/updatedDate/desc/1/10.rss" title="RSS" target="_blank"><i class="fa fa-fw fa-2x fa-rss"></i></a>';
+        $output .= '<li><a href="/' . (null !== $request ? $request->getLocale() : 'en') . '/news/messages/view/updatedDate/desc/1/10.rss" title="RSS" target="_blank"><i class="fa fa-fw fa-2x fa-rss"></i></a></li>';
         $output .= '</ul>';
 
         return $output;
