@@ -4,7 +4,7 @@
     {% else %}
         {{ include('@ZikulaZkSiteTheme/Include/main_menu.html.twig') }}
     {% endif %}
-    {% if home|default(false) == true or app.request.query.get('pid', 0) == 1 %}
+    {% if isAdminArea|default(false) != true and (home|default(false) == true or app.request.query.get('pid', 0) == 1) %}
         <div id="startPanel">
             <div class="container">
                 {{ showblockposition('home') }}

@@ -149,14 +149,14 @@ height: 80px;
 #startPanel {
 background: url('../images/start_mood.jpg') no-repeat top center transparent;
 background-size: 100% auto;
-color: #ffffff;
+color: #fff;
 font-size: 40px;
 font-weight: 700;
 line-height: 46px;
 text-align: center;
 padding: 35px;
 }
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
     #startPanel {
         background-size: auto 400px;
     }
@@ -167,7 +167,7 @@ display: none;
 #startPanel a {
 background-color: #0092d0;
 box-shadow: 3px 3px 10px #42403e;
-color: #ffffff;
+color: #fff;
 font-weight: 700;
 }
 #startPanel a:hover,
@@ -232,7 +232,7 @@ background-color: #0092d0;
 background-color: #97be0d;
 }
 #page1 .col-sm-6 {
-color: #ffffff;
+color: #fff;
 }
 #page1 .col-sm-6 h2 {
 font-size: 30px;
@@ -364,7 +364,7 @@ clear: left;
 margin-left: 10px;
 }
 footer, footer a {
-color: #ffffff;
+color: #fff;
 }
 footer .nav > li > a {
 padding-top: 0;
