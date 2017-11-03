@@ -6,11 +6,13 @@
 {% block title %}
     {% set templateTitle = message|munewsmodule_formattedTitle|default(__('Message')) %}
     {{ templateTitle|notifyFilters('munewsmodule.filter_hooks.messages.filter')|safeHtml }}{% if routeArea == 'admin' %} <small>({{ message.workflowState|munewsmodule_objectState(false)|lower }})</small>{% endif %}
+    {% if hasPermission('MUNewsModule:Message:', '::', 'ACCESS_EDIT') %}
     {% set itemActions = knp_menu_get('MUNewsModule:ItemActionsMenu:menu', [], {entity: message, area: routeArea, context: 'display'}) %}
     <div class="dropdown">
         <a id="itemActions{{ message.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions') }} <span class="caret"></span></a>
         {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
     </div>
+    {% endif %}
 {% endblock %}
 {% block content %}
         <p>{{ message.createdDate|localizeddate('long', 'none') }}</p>
@@ -117,15 +119,14 @@
                             {{ include('@MUNewsModule/Helper/includeCategoriesDisplay.html.twig', {obj: message}) }}
                         {% endif %}
                     {% endif %}
+                    <p><a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view') }}"><i class="fa fa-chevron-left" aria-hidden="true"></i> {{ __('Back to the list of articles') }}</a></p>
                 </div>
                 {% set pdfLink = getModVar('MUNewsModule', 'displayPdfLink') %}
-                {% if pdfLink == 1 %}
+                {% if pdfLink == 1 %}        
                 <div class="col-sm-4">
                     <div class="message-display-footer">
-                    {#    <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'display', {'slug': message.slug, 'theme': 'printer'}) }}"><i class="fa fa-print fa-2x" aria-hidden="true"></i></a>&nbsp;#}
-                            {% if pdfLink == 1 %}        
-                            <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'display', {'slug': message.slug, '_format': 'pdf'}) }}"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a>
-                        {% endif %}
+                    {#    <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'display', {'slug': message.slug, 'theme': 'printer'}) }}"><i class="fa fa-print fa-2x" aria-hidden="true"></i></a>#}
+                        &nbsp;<a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'display', {'slug': message.slug, '_format': 'pdf'}) }}"><i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 {% endif %}
