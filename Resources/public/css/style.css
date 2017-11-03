@@ -394,3 +394,8 @@ footer a:focus {
 background-color: transparent;
 color: #f39900;
 }
+@media (max-width: 767px) {
+    footer .col-sm-4 {
+        text-align: center;
+    }
+}
