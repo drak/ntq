@@ -31,7 +31,7 @@ msgstr "Blöcke"
 msgid "Create message"
 msgstr "Artikel erstellen"
 
-msgid "Current issues"
+msgid "Current articles"
 msgstr "Aktuelles"
 
 msgid "Download"
@@ -58,7 +58,7 @@ msgstr "Artikel"
 msgid "My account"
 msgstr "Mein Konto"
 
-msgid "My messages"
+msgid "My articles"
 msgstr "Meine Artikel"
 
 msgid "No other articles found."
@@ -96,3 +96,6 @@ msgstr "Dropdown Toggle"
 
 msgid "Users"
 msgstr "Benutzer"
+
+#~ msgid "My messages"
+#~ msgstr "Meine Artikel"
