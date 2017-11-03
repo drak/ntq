@@ -3,6 +3,7 @@
 ---
 modules/Content/templates/block/menu.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/block/menu.tpl
 modules/Content/templates/block/menuitem.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/block/menuitem.tpl
+modules/Content/templates/contenttype/rss_view.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/rss_view.tpl
 modules/Content/templates/contenttype/youtube_edit.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/youtube_edit.tpl
 modules/Content/templates/contenttype/youtube_translate_new.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/youtube_translate_new.tpl
 modules/Content/templates/contenttype/youtube_translate_original.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/youtube_translate_original.tpl
