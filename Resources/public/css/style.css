@@ -21,6 +21,14 @@ width: 100%;
 min-height: 200px;
 }
 
+.navbar-brand img {
+max-width: 200px;
+}
+@media (max-width: 350px) {
+    .navbar-brand img {
+        max-width: 150px;
+    }
+}
 .navbar {
 background-color: #fff;
 border: none;
@@ -31,11 +39,25 @@ margin-bottom: 0;
 height: auto;
 margin-bottom: 28px;
 }
-.navbar .navbar-nav {
-margin-top: 36px;
+@media (min-width: 768px) {
+    .user-area .navbar .navbar-nav {
+        margin-top: 36px;
+        float: right;
+    }
 }
-.admin-area .navbar .navbar-nav {
-margin-top: 0;
+.navbar-toggle {
+margin-top: 25px;
+}
+@media (max-width: 350px) {
+    .navbar-toggle {
+        margin-top: 15px;
+    }
+}
+.user-area .navbar-collapse {
+margin-top: 30px;
+border: none;
+background-color: #fff;
+padding: 0 30px;
 }
 .navbar .navbar-nav a {
 font-size: 18px;
