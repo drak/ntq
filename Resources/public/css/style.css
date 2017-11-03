@@ -261,10 +261,11 @@ text-align: center;
 max-width: 45%;
 margin: 10px 2% 40px 2%;
 }
-
-#page1 .col-sm-6 ul {
-display: none;
+#page1 .col-sm-6 .fa-ul a {
+color: #fff;
+text-decoration: underline;
 }
+
 #page1 .content-area-bottom {
 padding-top: 20px;
 padding-bottom: 20px;

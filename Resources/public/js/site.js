@@ -5,27 +5,41 @@
     }
 
     function initFactDetails() {
-        $('#page1 .col-sm-6 h3').popover('hide');
-        $('#page1 .col-sm-6 h3 i').remove();
-        $('#page1 .col-sm-6 h3').css({ cursor: 'pointer' }).append(' <i class="fa fa-chevron-circle-right" style="font-size: .8em; margin-left: 8px"></i>');
-        $('#page1 .col-sm-6 h3').each(function (index) {
-            jQuery(this).unbind('click').click(function (event) {
-                $('#page1 .col-sm-6 h3').popover('destroy');
-                var placement = window.innerWidth < 768 ? 'top' : (index == 0 || index == 2 ? 'right' : 'left');
-                $(this).popover({
-                    container: 'body',
-                    title: $(this).text(),
-                    content: '<ul class="fa-ul">' + $(this).next('ul').html() + '</ul>',
-                    html: true,
-                    trigger: 'click focus',
-                    placement: 'auto ' + placement
-                }).popover('show');
-            });
-        });
+        $('#page1 .col-sm-6 h3')
+            .css({ cursor: 'pointer' })
+            .append(' <i class="fa fa-chevron-circle-right" style="font-size: .8em; margin-left: 8px"></i>')
+            .each(function (index) {
+                var headingId, listId;
+
+                headingId = 'featureHeading' + (index + 1);
+                listId = 'featureCollapse' + (index + 1);
+
+                $(this)
+                    .attr('id', headingId)
+                    .attr('role', 'button')
+                    .data('toggle', 'collapse')
+                    .data('parent', $(this).parent().parent().parent().parent())
+                    .attr('href', '#' + listId)
+                    .attr('aria-expanded', 'false')
+                    .attr('aria-controls', listId)
+                    .click(function (event) {
+                        $(this).parent().parent().parent().parent().find('.collapse').collapse('hide');
+                        $(this).next('.collapse').collapse('show');
+                    })
+                ;
+                $(this).next('ul.fa-ul')
+                    .attr('id', listId)
+                    .addClass('collapse')
+                    .attr('role', 'tabpanel')
+                    .attr('aria-labelledby', headingId)
+                ;
+            })
+        ;
+        $('.collapse').on('shown.bs.collapse hidden.bs.collapse', equalFactHeight);
     }
 
     function initFactScreens() {
-        jQuery('#page1 a.image-link').magnificPopup({
+        $('#page1 a.image-link').magnificPopup({
             type: 'image',
             closeOnContentClick: true,
             image: {
@@ -48,16 +62,27 @@
         });
     }
 
-    function initFactHeight() {
-        var leftHeadings, rightHeadings;
+    function equalFactHeight() {
+        var leftSide, rightSide, leftHeadings, rightHeadings;
 
-        leftHeadings = $('.col-sm-6 .left h3');
-        rightHeadings = $('.col-sm-6 .right h3');
+        leftSide = $('.col-sm-6 .left').first();
+        rightSide = $('.col-sm-6 .right').first();
+        leftHeadings = leftSide.find('h3');
+        rightHeadings = rightSide.find('h3');
         leftHeadings.eq(0).add(rightHeadings.eq(0)).matchHeight();
         leftHeadings.eq(1).add(rightHeadings.eq(1)).matchHeight();
+
+        leftSide.add(rightSide).css('height', 'auto');
+        if (window.innerWidth > 767) {
+            if (leftSide.height() > rightSide.height()) {
+                rightSide.height(leftSide.height());
+            } else {
+                leftSide.height(rightSide.height());
+            }
+        }
     }
 
-    function initDownloadsHeight() {
+    function equalDownloadsHeight() {
         $('#page2 .col-sm-4 .coremanager-button a').matchHeight();
     }
 
@@ -97,13 +122,12 @@
 
         if ($('#page1').length > 0) {
             initFactDetails();
-            $(window).resize(initFactDetails);
             initFactScreens();
-            initFactHeight();
-            $(window).resize(initFactHeight);
+            equalFactHeight();
+            $(window).resize(equalFactHeight);
         } else if ($('#page2').length > 0) {
-            initDownloadsHeight();
-            $(window).resize(initDownloadsHeight);
+            equalDownloadsHeight();
+            $(window).resize(equalDownloadsHeight);
         }
 
         $('#vendorList a').tooltip();
