@@ -258,10 +258,29 @@ margin-bottom: 60px;
 #page2 .col-sm-4 .coremanager-button {
 margin: 20px 0;
 }
+#page2 .col-sm-4 .coremanager-button a {
+border: none;
+box-shadow: 3px 3px 10px #42403e;
+}
 #page2 .col-sm-4 .content-paragraph,
 #page2 .col-sm-4 .download-description {
 text-align: center;
 }
+#page2 .col-sm-4 .z-blockposition-currentrelease .coremanager-button a {
+background-color: #0092d0;
+}
+#page2 .col-sm-4 .z-blockposition-legacyrelease .coremanager-button a {
+background-color: #97be0d;
+}
+#page2 .col-sm-4 .z-bkey-most .coremanager-button a {
+background-color: #f39900;
+}
+#page2 .col-sm-4 .coremanager-button a:hover,
+#page2 .col-sm-4 .coremanager-button a:focus,
+#page2 .col-sm-4 .coremanager-button a:active {
+background-color: #ffd300;
+}
+
 #page3 .col-sm-4 {
 margin: 15px 0;
 }
