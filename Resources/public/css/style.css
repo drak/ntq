@@ -154,7 +154,7 @@ font-size: 40px;
 font-weight: 700;
 line-height: 46px;
 text-align: center;
-padding: 35px;
+padding: 35px 0;
 }
 @media (max-width: 1199px) {
     #startPanel {
