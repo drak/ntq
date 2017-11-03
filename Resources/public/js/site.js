@@ -124,6 +124,7 @@
             initFactDetails();
             initFactScreens();
             equalFactHeight();
+            window.setTimeout(equalFactHeight, 1000);
             $(window).resize(equalFactHeight);
         } else if ($('#page2').length > 0) {
             equalDownloadsHeight();
