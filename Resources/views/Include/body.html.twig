@@ -1,0 +1,64 @@
+<div id="bootstrap-theme-main-container" class="container-fluid">
+    {% if isAdminArea|default(false) == true %}
+        {{ include('@ZikulaZkSiteTheme/Include/admin_menu.html.twig') }}
+    {% else %}
+        {{ include('@ZikulaZkSiteTheme/Include/main_menu.html.twig') }}
+    {% endif %}
+    {% if home|default(false) == true or app.request.query.get('pid', 0) == 1 %}
+        <div id="startPanel">
+            <div class="container">
+                {{ showblockposition('home') }}
+            </div>
+        </div>
+    {% else %}
+        <div id="mood{{ app.request.query.get('pid', 0) in [2, 3, 4] ? app.request.query.get('pid', '') : '' }}">
+        </div>
+    {% endif %}
+    <div class="container">
+        {% if app.request.query.get('pid', 0) == 2 %}
+            {% set currentReleaseBlocks = showblockposition('currentrelease') ~ '<p class="download-description"><small>Symfony 3 - ' ~ (app.request.locale == 'de' ? 'aktuelles Release' : 'current release') ~ '</small></p>' %}
+            {% set legacyReleaseBlocks = showblockposition('legacyrelease') ~ '<p class="download-description"><small>Symfony 2 + Zikula ' ~ (app.request.locale == 'de' ? 'Legacy-Layer' : 'legacy layer') ~ '</small></p>' %}
+            {% set mostBlock %}
+                <div class="z-block z-blockposition-blockposition z-bkey-most"><div class="coremanager-button">
+                    <a class="btn btn-lg btn-warning" role="button" href="https://modulestudio.de{% if app.request.locale == 'en' %}/en{% endif %}" style="white-space: normal"><i class="fa fa-magic fa-fw fa-3x pull-left"></i> {% if app.request.locale == 'de' %}Generiere Deine<br />eigenen Module{% else %}Generate your<br />own modules{% endif %}</a>
+                </div></div>
+                 <p class="download-description"><small>{{ (app.request.locale == 'de' ? 'Individuelle Erweiterungen einfach erzeugen' : 'Simply create individual extensions') }}</small></p>
+            {% endset %}
+            {% set extensionsList = getGitHubRepositories() %}
+            {{ maincontent|replace({ '<p>###CURRENT_RELEASE###</p>': currentReleaseBlocks, '<p>###LEGACY_RELEASE###</p>': legacyReleaseBlocks, '<p>###MODULE_STUDIO###</p>': mostBlock, '###GITHUB_REPOSITORIES###': extensionsList })|raw }}
+        {% elseif app.request.query.get('pid', 0) == 3 %}
+            {{ maincontent|replace({ '<p>###DOCS_MEDIA###</p>': getExternalMedia() })|raw }}
+        {% elseif app.request.query.get('pid', 0) == 7 %}
+            {{ maincontent|replace({ '###PIWIK_OPTOUT###': '<iframe frameborder="no" src="https://piwik.zikula.de/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=' ~ app.request.locale ~ '"></iframe>' })|raw }}
+        {% else %}
+            {{ maincontent|raw }}
+        {% endif %}
+    </div>
+    {% if isAdminArea|default(false) != true %}
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        {{ showblockposition('footerleft') }}
+                        {{ getFollowLinks() }}
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        {% if app.request.locale == 'de' %}Werbepartner:{% else %}Ad partners:{% endif %} <a href="http://www.onlinebetrug.net/">onlinebetrug</a>
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        {{ showblockposition('footerright') }}
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% set iconSize = 'width="32" height="32" class="img-responsive"' %}
+        <ul id="vendorList" class="list-inline text-center">
+            <li><a href="https://symfony.com/" title="Symfony"><img src="{{ zasset('@ZikulaZkSiteTheme:images/vendor/symfony.png') }}" alt="Symfony" {{ iconSize|raw }} /></a></li>
+            <li><a href="https://twig.symfony.com/" title="Twig"><img src="{{ zasset('@ZikulaZkSiteTheme:images/vendor/twig.png') }}" alt="Twig" {{ iconSize|raw }} /></a></li>
+            <li><a href="http://doctrine-project.org/" title="Doctrine"><img src="{{ zasset('@ZikulaZkSiteTheme:images/vendor/doctrine.png') }}" alt="Doctrine" {{ iconSize|raw }} /></a></li>
+            <li><a href="https://jquery.com/" title="jQuery"><img src="{{ zasset('@ZikulaZkSiteTheme:images/vendor/jquery.png') }}" alt="jQuery" {{ iconSize|raw }} /></a></li>
+            <li><a href="{% if app.request.locale == 'de' %}http://holdirbootstrap.de/{% else %}https://getbootstrap.com/{% endif %}" title="Bootstrap"><img src="{{ zasset('@ZikulaZkSiteTheme:images/vendor/bootstrap.png') }}" alt="Bootstrap" {{ iconSize|raw }} /></a></li>
+        </ul>
+    {% endif %}
+</div>
+{{ pageAddAsset('javascript', zasset('@ZikulaZkSiteTheme:js/site.js'), 105) }}

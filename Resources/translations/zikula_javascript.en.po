@@ -1,0 +1,12 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "Next (Right arrow key)"
+msgstr "Next (Right arrow key)"
+msgid "Previous (Left arrow key)"
+msgstr "Previous (Left arrow key)"
+msgid "of"
+msgstr "of"

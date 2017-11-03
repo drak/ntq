@@ -1,0 +1,5 @@
+zikulazksitetheme:
+    # define routing support for these controllers
+    resource: "@ZikulaZkSiteTheme/Controller"
+    # enable support for defining routes by annotations
+    type: annotation

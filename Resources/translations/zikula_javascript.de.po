@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: ZkSiteTheme\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Axel Guckelsberger <info@guite.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "Next (Right arrow key)"
+msgstr "Weiter (rechte Pfeiltaste)"
+
+msgid "Previous (Left arrow key)"
+msgstr "Zurück (linke Pfeiltaste)"
+
+msgid "of"
+msgstr "von"

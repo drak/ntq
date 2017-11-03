@@ -1,9 +1,18 @@
 ## YAML Override template
 ## original/file.tpl: override/file.tpl
 ---
-system/Zikula/Module/SearchModule/Resources/views/Block/search.tpl: themes/Zikula/Theme/ModernBusinessTheme/Resources/views/modules/ZikulaSearchModule/Block/search.tpl
-system/Zikula/Module/BlocksModule/Resources/views/Block/Extmenu/topnav.tpl: themes/Zikula/Theme/ModernBusinessTheme/Resources/views/modules/ZikulaBlocksModule/Block/Extmenu/topnav.tpl
-system/Zikula/Module/BlocksModule/Resources/views/Block/Extmenu/extmenu.tpl: themes/Zikula/Theme/ModernBusinessTheme/Resources/views/modules/ZikulaBlocksModule/Block/Extmenu/extmenu.tpl
-system/Zikula/Module/BlocksModule/Resources/views/Block/Menutree/horizontal.tpl: themes/Zikula/Theme/ModernBusinessTheme/Resources/views/modules/ZikulaBlocksModule/Block/Menutree/horizontal.tpl
-modules/News/templates/block/stories.tpl: themes/Zikula/Theme/ModernBusinessTheme/Resources/views/modules/News/block/stories.tpl
-modules/News/templates/block/stories_row.tpl: themes/Zikula/Theme/ModernBusinessTheme/Resources/views/modules/News/block/stories_row.tpl
+modules/Content/templates/block/menu.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/block/menu.tpl
+modules/Content/templates/block/menuitem.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/block/menuitem.tpl
+modules/Content/templates/contenttype/youtube_edit.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/youtube_edit.tpl
+modules/Content/templates/contenttype/youtube_translate_new.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/youtube_translate_new.tpl
+modules/Content/templates/contenttype/youtube_translate_original.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/youtube_translate_original.tpl
+modules/Content/templates/contenttype/youtube_view.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/contenttype/youtube_view.tpl
+modules/Content/templates/layouttype/bootstrapcolumn2c4c8.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn2c4c8.tpl
+modules/Content/templates/layouttype/bootstrapcolumn2c6c6.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn2c6c6.tpl
+modules/Content/templates/layouttype/bootstrapcolumn2c6c6_edit.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn2c6c6_edit.tpl
+modules/Content/templates/layouttype/bootstrapcolumn2c8c4.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn2c8c4.tpl
+modules/Content/templates/layouttype/bootstrapcolumn3c3c3c6.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn3c3c3c6.tpl
+modules/Content/templates/layouttype/bootstrapcolumn3c3c6c3.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn3c3c6c3.tpl
+modules/Content/templates/layouttype/bootstrapcolumn3c4c4c4.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn3c4c4c4.tpl
+modules/Content/templates/layouttype/bootstrapcolumn3c6c3c3.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn3c6c3c3.tpl
+modules/Content/templates/layouttype/bootstrapcolumn4c3c3c3c3.tpl: themes/ZkSiteTheme/Resources/views/modules/Content/layouttype/bootstrapcolumn4c3c3c3c3.tpl

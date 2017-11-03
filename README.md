@@ -1,16 +1,10 @@
-zikula.org
-==========
+ZkSite theme
+============
 
-This theme is intended for sole use as the theme for zikula.org websites.
+This theme is intended for sole use as the theme for the official Zikula website.
 
-requires Zikula Core 1.4.0+
+Requires Zikula Core 1.5.0+
 
 ***under development***
 
-see [contributing guidelines](https://github.com/zikula/zikula.org/blob/master/CONTRIBUTING.md ) before doing so.
-
-ModernBusinessTheme for Zikula
-
-based on [Modern Business](http://startbootstrap.com/modern-business) by Iron Summit Media Strategies.
-
-clone as `ModernBusinessTheme` (not as zikula.org) into `themes/Zikula/Theme/ModernBusinessTheme`
+Clone as `ZkSiteTheme` (not as zikula.org) into the `themes/` folder.

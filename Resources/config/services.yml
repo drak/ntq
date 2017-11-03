@@ -1,0 +1,13 @@
+services:
+    zikula_zksite_theme.extensions_list_helper:
+        class: Zikula\ZkSiteTheme\Helper\ExtensionsListHelper
+        arguments:
+            - '@zikula_core_manager_module.client_helper'
+
+    zikula_zksite_theme.twig.zksite_extension:
+        class: Zikula\ZkSiteTheme\Twig\ZkSiteExtension
+        arguments:
+            - "@request_stack"
+            - '@zikula_zksite_theme.extensions_list_helper'
+        tags:
+            - { name: twig.extension }
