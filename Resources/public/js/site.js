@@ -136,6 +136,7 @@
                 responsive: true,
                 listTheme: 'light'
             });
+            $('#videoHeading').removeClass('hidden');
         }
 
         $('#vendorList a').tooltip();

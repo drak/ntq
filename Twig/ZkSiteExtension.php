@@ -79,7 +79,7 @@ class ZkSiteExtension extends \Twig_Extension
         $output = '';
         $output .= '<div class="row">';
         $output .= '<div class="col-sm-12">';
-        $output .= '<h3><i class="fa fa-youtube"></i> Videos</h3>';
+        $output .= '<h3 id="videoHeading" class="hidden"><i class="fa fa-youtube"></i> Videos</h3>';
         $request = $this->requestStack->getCurrentRequest();
         $locale = null !== $request ? $request->getLocale() : 'en';
         $playlist = $locale == 'de' ? 'PLN7cKDJMVZ6nambVMwU3JOFp72MPa2MYO' : 'PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l';
