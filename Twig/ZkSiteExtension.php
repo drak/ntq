@@ -80,9 +80,10 @@ class ZkSiteExtension extends \Twig_Extension
         $output .= '<div class="row">';
         $output .= '<div class="col-sm-12">';
         $output .= '<h3><i class="fa fa-youtube"></i> Videos</h3>';
-        $output .= '<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l" frameborder="0" gesture="media" allowfullscreen style="min-height: 315px"></iframe>';
-        //$output .= '<iframe src="https://www.youtube-nocookie.com/embed/?listType=playlist&list=PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l?ecver=1" frameborder="0" gesture="media" allowfullscreen style="min-height: 315px"></iframe>';
-        //$output .= '<iframe src="https://www.youtube.com/embed?listType=search&amp;list=zikula" frameborder="0" allowfullscreen style="min-height: 400px"></iframe>';
+        $request = $this->requestStack->getCurrentRequest();
+        $locale = null !== $request ? $request->getLocale() : 'en';
+        $playlist = $locale == 'de' ? 'PLN7cKDJMVZ6nambVMwU3JOFp72MPa2MYO' : 'PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l';
+        $output .= '<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=' . $playlist . '" frameborder="0" gesture="media" allowfullscreen style="min-height: 315px"></iframe>';
         $output .= '</div>';
         $output .= '</div>';
 
