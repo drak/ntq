@@ -83,7 +83,7 @@ class ZkSiteExtension extends \Twig_Extension
         $request = $this->requestStack->getCurrentRequest();
         $locale = null !== $request ? $request->getLocale() : 'en';
         $playlist = $locale == 'de' ? 'PLN7cKDJMVZ6nambVMwU3JOFp72MPa2MYO' : 'PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l';
-        $output .= '<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=' . $playlist . '" frameborder="0" gesture="media" allowfullscreen style="min-height: 315px"></iframe>';
+        $output .= '<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=' . $playlist . '&amp;rel=0" frameborder="0" gesture="media" allowfullscreen style="min-height: 450px"></iframe>';
         $output .= '</div>';
         $output .= '</div>';
 
