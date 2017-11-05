@@ -129,10 +129,15 @@
         } else if ($('#page2').length > 0) {
             equalDownloadsHeight();
             $(window).resize(equalDownloadsHeight);
+            initExtensionsFiltering();
+        } else if ($('#page3').length > 0) {
+            $('#videoFrame').ytv({
+                playlist: $('#playlistId').text(),
+                responsive: true,
+                listTheme: 'light'
+            });
         }
 
         $('#vendorList a').tooltip();
-
-        initExtensionsFiltering();
     });
 })(jQuery)
