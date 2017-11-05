@@ -43,7 +43,9 @@
                         {{ getFollowLinks() }}
                     </div>
                     <div class="col-sm-4 text-center">
-                        {{ __('Ad partners:', 'zikulazksitetheme') }} <a href="http://www.onlinebetrug.net/">onlinebetrug</a>
+                        {% if home|default(false) == true %}
+                            {{ __('Ad partners:', 'zikulazksitetheme') }} <a href="http://www.onlinebetrug.net/">onlinebetrug</a>
+                        {% endif %}
                     </div>
                     <div class="col-sm-4 text-right">
                         {{ showblockposition('footerright') }}
