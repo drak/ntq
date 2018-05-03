@@ -9,8 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="{{ zasset('@ZikulaZkSiteTheme:images/favicon.ico') }}" rel="shortcut icon" />
         <link rel="icon" href="{{ zasset('@ZikulaZkSiteTheme:images/favicon.ico') }}" type="image/ico" />
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
         <link rel="alternate" type="application/rss+xml" title="Zikula RSS News" href="{{ url('munewsmodule_message_view', {sort: 'updatedDate', sortdir: 'desc', '_format': 'rss'}) }}" />
+        <link rel="stylesheet" href="/additions/cookieconsent/cookieconsent.min.css" />
         {{ pageAddAsset('javascript', zasset('@ZikulaZkSiteTheme:js/jquery.matchHeight/jquery.matchHeight-min.js')) }}
         {{ pageAddAsset('javascript', asset('magnific-popup/jquery.magnific-popup.min.js')) }}
         {{ pageAddAsset('stylesheet', asset('magnific-popup/magnific-popup.css')) }}
