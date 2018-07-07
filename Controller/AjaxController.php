@@ -11,10 +11,9 @@
 
 namespace Zikula\ZkSiteTheme\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Zikula\Core\Controller\AbstractController;
 use Zikula\ZkSiteTheme\Helper\ExtensionsListHelper;
 
@@ -26,8 +25,7 @@ class AjaxController extends AbstractController
     /**
      * Returns list of extension repositories.
      *
-     * @Route("/getExtensions", options={"expose"=true})
-     * @Method("GET")
+     * @Route("/getExtensions", methods = {"GET"}, options={"expose"=true})
      *
      * @return Response
      */
