@@ -29,7 +29,7 @@
         {% elseif app.request.query.get('pid', 0) == 3 %}
             {{ maincontent|replace({ '<p>###DOCS_MEDIA###</p>': getExternalMedia() })|raw }}
         {% elseif app.request.query.get('pid', 0) == 7 %}
-            {{ maincontent|replace({ '###PIWIK_OPTOUT###': '<iframe frameborder="no" src="https://piwik.zikula.de/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=' ~ app.request.locale ~ '"></iframe>' })|raw }}
+            {{ maincontent|replace({ '###PIWIK_OPTOUT###': '<iframe frameborder="no" src="https://stats.ziku.la/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=' ~ app.request.locale ~ '"></iframe>' })|raw }}
         {% else %}
             {{ maincontent|raw }}
         {% endif %}
@@ -83,12 +83,12 @@ window.addEventListener('load', function() {
             'message': 'Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Weitere Informationen zu Cookies erhalten Sie in unserer ',
             'dismiss': 'OK',
             'link': 'Datenschutzerklärung',
-            'href': 'https://zikula.de/de/service/privacy.html'
+            'href': 'https://ziku.la/de/service/privacy.html'
         {% else %}
             'message': 'For optimal design and continuous improvement of our website we use cookies. By further usage of our website you agree to this cookie usage. Further information about cookies is available in our ',
             'dismiss': 'OK',
             'link': 'privacy policy',
-            'href': 'https://zikula.de/en/service/privacy.html'
+            'href': 'https://ziku.la/en/service/privacy.html'
         {% endif %}
         }
     })
@@ -97,7 +97,7 @@ window.addEventListener('load', function() {
 <script>
 var _paq = _paq || [];
 (function() {
-    var u = 'https://piwik.zikula.de/';
+    var u = 'https://stats.ziku.la/';
     _paq.push(['setSiteId', 1]);
     _paq.push(['setTrackerUrl', u+'piwik.php']);
     _paq.push(['trackPageView']);
@@ -110,4 +110,4 @@ var _paq = _paq || [];
     s.parentNode.insertBefore(g,s);
 })()
 </script>
-<noscript><p><img src="https://piwik.zikula.de/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
+<noscript><p><img src="https://stats.ziku.la/piwik.php?idsite=1" style="border:0" alt="" /></p></noscript>
