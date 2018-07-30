@@ -2,7 +2,7 @@
     function updateExternalLinks() {
         $("a[href*='http://']:not([href*='" + location.hostname.replace('www.', '') + "'])").attr('target', '_blank');
         $("a[href*='https://']:not([href*='" + location.hostname.replace('www.', '') + "'])").attr('target', '_blank');
-        $("a[href*='https://demo.zikula.de']").attr('target', '_blank');
+        $("a[href*='https://demo.ziku.la']").attr('target', '_blank');
     }
 
     function initFactDetails() {
