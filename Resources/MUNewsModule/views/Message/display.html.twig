@@ -132,7 +132,6 @@
             </div>
             {{ block('display_hooks') }}
         </div>
-    </div>
 {% endblock %}
 {% block display_hooks %}
     {{ notifyDisplayHooks(eventName='munewsmodule.ui_hooks.messages.display_view', id=message.getKey(), urlObject=currentUrlObject) }}
