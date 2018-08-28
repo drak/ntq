@@ -43,7 +43,7 @@
                         {{ getFollowLinks() }}
                     </div>
                     <div class="col-sm-4 text-center">
-                        {% app.request.locale == 'de' %}
+                        {% if app.request.locale == 'de' %}
                             {{ __('Ad partners:', 'zikulazksitetheme') }} <a href="https://www.kreditexperte.de/">KREDITEXPERTE</a>
                         {% endif %}
                     </div>
