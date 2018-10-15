@@ -5,22 +5,29 @@ admin:
   page: ":admin.html.twig"
   block:
     positions:
+      currentrelease: "Block:blank.html.twig"
       footerleft: "Block:blank.html.twig"
       footerright: "Block:blank.html.twig"
       header: "Block:blank.html.twig"
+      home: "Block:blank.html.twig"
+      legacyrelease: "Block:blank.html.twig"
 home:
   page: ":home.html.twig"
   block:
     positions:
+      currentrelease: "Block:blank.html.twig"
       footerleft: "Block:blank.html.twig"
       footerright: "Block:blank.html.twig"
       header: "Block:blank.html.twig"
+      home: "Block:blank.html.twig"
+      legacyrelease: "Block:blank.html.twig"
 master:
   page: ":master.html.twig"
   block:
     positions:
+      currentrelease: "Block:blank.html.twig"
       footerleft: "Block:blank.html.twig"
       footerright: "Block:blank.html.twig"
       header: "Block:blank.html.twig"
-      currentrelease: "Block:blank.html.twig"
+      home: "Block:blank.html.twig"
       legacyrelease: "Block:blank.html.twig"
