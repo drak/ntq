@@ -67,7 +67,7 @@
             <div class="col-sm-4">
             {% if message.imageUpload3 is not empty %}
                 <div>{% if message.imageUpload3 is not empty and message.imageUpload3Meta|default %}
-                            <a href="{{ message.imageUpload3Url }}" title="{{ message|munewsmodule_formattedTitle|e('html_attr') }}"{% if message.imageUpload3Meta.isImage %} class="image-link"{% endif %}>
+                    <a href="{{ message.imageUpload3Url }}" title="{{ message|munewsmodule_formattedTitle|e('html_attr') }}"{% if message.imageUpload3Meta.isImage %} class="image-link"{% endif %}>
                 {% if message.imageUpload3Meta.isImage %}
                     {% set thumbOptions = attribute(thumbRuntimeOptions, 'messageImageUpload3') %}
                     <img src="{{ message.imageUpload3.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ message|munewsmodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
@@ -102,7 +102,7 @@
                     {% set showRelatedArticles = getModVar('MUNewsModule', 'enableMoreMessagesInCategory') %}
                     {% if showRelatedArticles == 1 and message.categories is defined and message.categories|length > 0 %}
                         <h3>{{ __('Related articles', 'zikulazksitetheme') }}</h3>
-                        {% set amountOfRelatedArticles = 3 %}{# TODO make configurable #}
+                        {% set amountOfRelatedArticles = getModVar('MUNewsModule', 'amountOfMoreArticlesInCategory') %}
                         {% for catMapping in message.categories %}
                             <h4>{{ catMapping.category.display_name[app.request.locale]|default(catMapping.category.name) }}</h4>
                             {% set categoryArticles = munewsmodule_getRelatedArticles(catMapping, amountOfRelatedArticles) %}
