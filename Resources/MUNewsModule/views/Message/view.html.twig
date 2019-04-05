@@ -55,17 +55,19 @@
 {% block page_nav_links %}
     <p>
         {% if canBeCreated %}
-            {% if hasPermission('MUNewsModule:Message:', '::', 'ACCESS_COMMENT') %}
+            {% if permissionHelper.hasComponentPermission('message', constant('ACCESS_COMMENT')) %}
                 {% set createTitle = __('Create message', 'zikulazksitetheme') %}
                 <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'edit') }}" title="{{ createTitle|e('html_attr') }}"><i class="fa fa-plus"></i> {{ createTitle }}</a>
             {% endif %}
         {% endif %}
         {% if all == 1 %}
-            {% set linkTitle = __('Back to paginated view', 'zikulazksitetheme') %}
-            <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view') }}" title="{{ linkTitle|e('html_attr') }}"><i class="fa fa-table"></i> {{ linkTitle }}</a>
+            {% set linkTitle = __('Back to paginated view') %}
+            {% set routeArgs = own ? {own: 1} : {} %}
+            <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view', routeArgs) }}" title="{{ linkTitle|e('html_attr') }}"><i class="fa fa-table"></i> {{ linkTitle }}</a>
         {% else %}
-            {% set linkTitle = __('Show all entries', 'zikulazksitetheme') %}
-            <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view', {all: 1}) }}" title="{{ linkTitle|e('html_attr') }}"><i class="fa fa-table"></i> {{ linkTitle }}</a>
+            {% set linkTitle = __('Show all entries') %}
+            {% set routeArgs = own ? {all: 1, own: 1} : {all: 1} %}
+            <a href="{{ path('munewsmodule_message_' ~ routeArea ~ 'view', routeArgs) }}" title="{{ linkTitle|e('html_attr') }}"><i class="fa fa-table"></i> {{ linkTitle }}</a>
         {% endif %}
     </p>
 {% endblock %}
@@ -73,9 +75,11 @@
     
     {# here you can activate calling display hooks for the view page if you need it #}
     {# % if routeArea != 'admin' %}
-        {% set hooks = notifyDisplayHooks(eventName='munewsmodule.ui_hooks.messages.display_view', urlObject=currentUrlObject) %}
-        {% for providerArea, hook in hooks %}
-            {{ hook }}
-        {% endfor %}
+        {% set hooks = notifyDisplayHooks(eventName='munewsmodule.ui_hooks.messages.display_view', urlObject=currentUrlObject, outputAsArray=true) %}
+        {% if hooks is iterable and hooks|length > 0 %}
+            {% for area, hook in hooks %}
+                <div class="z-displayhook" data-area="{{ area|e('html_attr') }}">{{ hook|raw }}</div>
+            {% endfor %}
+        {% endif %}
     {% endif % #}
 {% endblock %}
