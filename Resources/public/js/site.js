@@ -6,7 +6,7 @@
     }
 
     function initFactDetails() {
-        $('#page1 .col-sm-6 h3')
+        $('#page2 .col-sm-6 h3')
             .css({ cursor: 'pointer' })
             .append(' <i class="fa fa-chevron-circle-right" style="font-size: .8em; margin-left: 8px"></i>')
             .each(function (index) {
@@ -40,7 +40,7 @@
     }
 
     function initFactScreens() {
-        $('#page1 a.image-link').magnificPopup({
+        $('#page2 a.image-link').magnificPopup({
             type: 'image',
             closeOnContentClick: true,
             image: {
@@ -84,7 +84,7 @@
     }
 
     function equalDownloadsHeight() {
-        $('#page2 .col-sm-4 .coremanager-button a').matchHeight();
+        $('#page3 .col-sm-4 .coremanager-button a').matchHeight();
     }
 
     function updateExtensionsList(event) {
@@ -121,17 +121,17 @@
     $(document).ready(function() {
         updateExternalLinks();
 
-        if ($('#page1').length > 0) {
+        if ($('#page2').length > 0) {
             initFactDetails();
             initFactScreens();
             equalFactHeight();
             window.setTimeout(equalFactHeight, 1000);
             $(window).resize(equalFactHeight);
-        } else if ($('#page2').length > 0) {
+        } else if ($('#page3').length > 0) {
             equalDownloadsHeight();
             $(window).resize(equalDownloadsHeight);
             initExtensionsFiltering();
-        } else if ($('#page3').length > 0) {
+        } else if ($('#page4').length > 0) {
             $('#videoFrame').ytv({
                 playlist: $('#playlistId').text(),
                 responsive: true,

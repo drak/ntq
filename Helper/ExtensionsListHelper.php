@@ -132,7 +132,7 @@ class ExtensionsListHelper
      */
     private function loadGitHubRepositories()
     {
-        $cacheFile = 'userdata/github_extension_repositories.json';
+        $cacheFile = 'web/uploads/github_extension_repositories.json';
         $refetch = false;
         if (!file_exists($cacheFile)) {
             $refetch = true;

@@ -1,0 +1,21 @@
+{% if context|default == 'menuBlock' %}
+    {% if page.id == 3 %}
+        <li id="menuItemNews"{% if 'munewsmodule_' in app.request.get('_route') %} class="active"{% endif %}><a href="/{{ app.request.locale }}/news/messages/view" title="News">News</a></li>
+    {% elseif page.id == 7 %}
+        {% if app.request.locale == 'de' %}
+            <li id="menuItemLocale"><a href="/en/" title="View this page in English">English</a></li>
+        {% else %}
+            <li id="menuItemLocale"><a href="/de/" title="Diese Seite auf Deutsch anschauen">Deutsch</a></li>
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% set pageTitle = page|zikulacontentmodule_formattedTitle %}
+{% set isActivePage = zikulacontentmodule_isCurrentPage(page) %}
+<li{% if context|default == 'menuBlock' %} id="menuItem{{ page.id }}"{% endif %} role="presentation"{% if isDropdown|default or isActivePage %} class="{% if isDropdown|default %}dropdown{% if isActivePage %} {% endif %}{% endif %}{% if isActivePage %} active{% endif %}"{% endif %}>
+{% if vars.subPagesHandling|default == 'hide' or page.children|length < 1 %}
+    <a href="{{ path('zikulacontentmodule_page_display', {slug: page.slug}) }}" title="{{ pageTitle|e('html_attr') }}">{{ pageTitle }}</a>
+{% elseif isDropdown|default %}
+    <a href="#" title="{{ pageTitle|e('html_attr') }}" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ pageTitle }} <span class="caret"></span></a>
+    {{ include('@ZikulaContentModule/Block/pageListInclude.html.twig', {pages: page.children, context: context, includeSelf: context == 'menuBlock'}) }}
+{% endif %}
+</li>

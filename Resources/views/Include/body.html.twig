@@ -4,31 +4,32 @@
     {% else %}
         {{ include('@ZikulaZkSiteTheme/Include/main_menu.html.twig') }}
     {% endif %}
-    {% if isAdminArea|default(false) != true and (home|default(false) == true or app.request.query.get('pid', 0) == 1) %}
+    {% set currentSlug = app.request.attributes.get('slug', '') %}
+    {% if isAdminArea|default(false) != true and (home|default(false) == true or currentSlug == 'about') %}
         <div id="startPanel">
             <div class="container">
                 {{ showblockposition('home') }}
             </div>
         </div>
     {% else %}
-        <div id="mood{{ app.request.query.get('pid', 0) in [2, 3, 4] ? app.request.query.get('pid', '') : '' }}">
+        <div id="mood{{ currentSlug in ['downloads', 'documentation', 'dokumentation', 'support'] ? currentSlug : '' }}">
         </div>
     {% endif %}
     <div class="container">
-        {% if app.request.query.get('pid', 0) == 2 %}
+        {% if currentSlug == 'downloads' %}
             {% set currentReleaseBlocks = showblockposition('currentrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 3 - current release', 'zikulazksitetheme') ~ '</small></p>' %}
             {% set legacyReleaseBlocks = showblockposition('legacyrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 2 + Zikula legacy layer', 'zikulazksitetheme') ~ '</small></p>' %}
             {% set mostBlock %}
                 <div class="z-block z-blockposition-blockposition z-bkey-most"><div class="coremanager-button">
-                    <a class="btn btn-lg btn-warning" role="button" href="https://modulestudio.de{% if app.request.locale == 'en' %}/en{% endif %}" style="white-space: normal"><i class="fa fa-magic fa-fw fa-3x pull-left"></i> {{ __('Generate your<br />own modules', 'zikulazksitetheme')|raw }}</a>
+                    <a class="btn btn-lg btn-warning" role="button" href="https://modulestudio.de/{{ app.request.locale }}/" style="white-space: normal"><i class="fa fa-magic fa-fw fa-3x pull-left"></i> {{ __('Generate your<br />own modules', 'zikulazksitetheme')|raw }}</a>
                 </div></div>
                  <p class="download-description"><small>{{ __('Simply create individual extensions', 'zikulazksitetheme') }}</small></p>
             {% endset %}
             {% set extensionsList = getGitHubRepositories() %}
             {{ maincontent|replace({ '<p>###CURRENT_RELEASE###</p>': currentReleaseBlocks, '<p>###LEGACY_RELEASE###</p>': legacyReleaseBlocks, '<p>###MODULE_STUDIO###</p>': mostBlock, '###GITHUB_REPOSITORIES###': extensionsList })|raw }}
-        {% elseif app.request.query.get('pid', 0) == 3 %}
+        {% elseif currentSlug in ['documentation', 'dokumentation'] %}
             {{ maincontent|replace({ '<p>###DOCS_MEDIA###</p>': getExternalMedia() })|raw }}
-        {% elseif app.request.query.get('pid', 0) == 7 %}
+        {% elseif currentSlug in ['privacy', 'datenschutz'] %}
             {{ maincontent|replace({ '###PIWIK_OPTOUT###': '<iframe frameborder="no" src="https://stats.ziku.la/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=' ~ app.request.locale ~ '"></iframe>' })|raw }}
         {% else %}
             {{ maincontent|raw }}
