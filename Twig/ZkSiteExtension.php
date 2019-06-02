@@ -82,7 +82,7 @@ class ZkSiteExtension extends \Twig_Extension
         $output .= '<h3 id="videoHeading" class="hidden"><i class="fa fa-youtube-play"></i> Videos</h3>';
         $request = $this->requestStack->getCurrentRequest();
         $locale = null !== $request ? $request->getLocale() : 'en';
-        $playlist = $locale == 'de' ? 'PLN7cKDJMVZ6nambVMwU3JOFp72MPa2MYO' : 'PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l';
+        $playlist = /*$locale == 'de' ? 'PLN7cKDJMVZ6nambVMwU3JOFp72MPa2MYO' : */'PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l';
         $output .= '<div id="videoFrame"></div>';
         $output .= '<span id="playlistId" class="hidden">' . $playlist . '</span>';
         $output .= '</div>';
