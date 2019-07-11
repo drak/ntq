@@ -29,7 +29,7 @@
             {{ maincontent|replace({ '<p>###CURRENT_RELEASE###</p>': currentReleaseBlocks, '<p>###LEGACY_RELEASE###</p>': legacyReleaseBlocks, '<p>###MODULE_STUDIO###</p>': mostBlock, '###GITHUB_REPOSITORIES###': extensionsList })|raw }}
         {% elseif currentSlug in ['documentation', 'dokumentation'] %}
             {{ maincontent|replace({ '<p>###DOCS_MEDIA###</p>': getExternalMedia() })|raw }}
-        {% elseif currentSlug in ['privacy', 'datenschutz'] %}
+        {% elseif currentSlug in ['service/privacy', 'service/datenschutz'] %}
             {{ maincontent|replace({ '###PIWIK_OPTOUT###': '<iframe frameborder="no" src="https://stats.ziku.la/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=' ~ app.request.locale ~ '"></iframe>' })|raw }}
         {% else %}
             {{ maincontent|raw }}
