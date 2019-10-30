@@ -36,8 +36,7 @@ class ZkSiteExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('getGitHubRepositories', [$this, 'getGitHubRepositories'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('getFollowLinks', [$this, 'getFollowLinks'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('getExternalMedia', [$this, 'getExternalMedia'], ['is_safe' => ['html']])
+            new \Twig_SimpleFunction('getFollowLinks', [$this, 'getFollowLinks'], ['is_safe' => ['html']])
         ];
     }
 
@@ -65,28 +64,6 @@ class ZkSiteExtension extends \Twig_Extension
         $request = $this->requestStack->getCurrentRequest();
         $output .= '<li><a href="/' . (null !== $request ? $request->getLocale() : 'en') . '/news/messages/view/createdDate/desc/1/10.rss" title="RSS" target="_blank"><i class="fa fa-fw fa-2x fa-rss"></i></a></li>';
         $output .= '</ul>';
-
-        return $output;
-    }
-
-    /**
-     * Renders related media from other sites.
-     *
-     * @return string Output
-     */
-    public function getExternalMedia()
-    {
-        $output = '';
-        $output .= '<div class="row">';
-        $output .= '<div class="col-sm-12">';
-        $output .= '<h3 id="videoHeading" class="hidden"><i class="fa fa-youtube-play"></i> Videos</h3>';
-        $request = $this->requestStack->getCurrentRequest();
-        $locale = null !== $request ? $request->getLocale() : 'en';
-        $playlist = /*$locale == 'de' ? 'PLN7cKDJMVZ6nambVMwU3JOFp72MPa2MYO' : */'PLN7cKDJMVZ6lQX5KMNoSxRBd8D5hSax1l';
-        $output .= '<div id="videoFrame"></div>';
-        $output .= '<span id="playlistId" class="hidden">' . $playlist . '</span>';
-        $output .= '</div>';
-        $output .= '</div>';
 
         return $output;
     }
