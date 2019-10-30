@@ -65,35 +65,6 @@
     {% endif %}
 </div>
 {{ pageAddAsset('javascript', zasset('@ZikulaZkSiteTheme:js/site.js'), 105) }}
-<script>
-window.addEventListener('load', function() {
-    window.cookieconsent.initialise({
-        'palette': {
-            'popup': {
-                'background': '#252e39'
-            },
-            'button': {
-                'background': '#14a7d0'
-            }
-        },
-        'theme': 'classic',
-        'position': 'bottom-right',
-        'content': {
-        {% if app.request.locale == 'de' %}
-            'message': 'Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Weitere Informationen zu Cookies erhalten Sie in unserer ',
-            'dismiss': 'OK',
-            'link': 'Datenschutzerklärung',
-            'href': 'https://ziku.la/de/service/privacy.html'
-        {% else %}
-            'message': 'For optimal design and continuous improvement of our website we use cookies. By further usage of our website you agree to this cookie usage. Further information about cookies is available in our ',
-            'dismiss': 'OK',
-            'link': 'privacy policy',
-            'href': 'https://ziku.la/en/service/privacy.html'
-        {% endif %}
-        }
-    })
-});
-</script>
 <script type="text/plain" data-usercentrics="Matomo">
     var _paq = window._paq || [];
     _paq.push(['trackPageView']);
