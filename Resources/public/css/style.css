@@ -447,3 +447,30 @@ color: #f39900;
         text-align: center;
     }
 }
+
+#page4 .embed-responsive > privacy-proxy-video {
+    position: absolute !important;
+    top: 0 !important;
+}
+@media (min-width: 576px) {
+    #page4 .embed-responsive > privacy-proxy-video {
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+@media (max-width: 575px) {
+    .embed-responsive {
+        min-height: 250px;
+    }
+    #page4 .embed-responsive > privacy-proxy-video {
+        left: 50% !important;
+        margin-left: -200px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .zikula-content-module-you-tube-type {
+        width: 100%;
+    }
+}
