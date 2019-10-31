@@ -131,13 +131,6 @@
             equalDownloadsHeight();
             $(window).resize(equalDownloadsHeight);
             initExtensionsFiltering();
-        } else if ($('#page4').length > 0) {
-            $('#videoFrame').ytv({
-                playlist: $('#playlistId').text(),
-                responsive: true,
-                listTheme: 'light'
-            });
-            $('#videoHeading').removeClass('hidden');
         }
 
         $('#vendorList a').tooltip();
