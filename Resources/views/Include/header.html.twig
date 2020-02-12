@@ -6,8 +6,13 @@
         <title>{{ pagevars.title }}{% if sitename not in pagevars.title %} - {{ sitename }}{% endif %}</title>
         <meta name="description" content="{{ pagevars.meta.description }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="{{ zasset('@ZikulaZkSiteTheme:images/favicon.ico') }}" rel="shortcut icon" />
-        <link rel="icon" href="{{ zasset('@ZikulaZkSiteTheme:images/favicon.ico') }}" type="image/ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
         <link rel="alternate" type="application/rss+xml" title="Zikula RSS News" href="{{ url('munewsmodule_message_view', {sort: 'updatedDate', sortdir: 'desc', '_format': 'rss'}) }}" />
         {{ pageAddAsset('javascript', zasset('@ZikulaZkSiteTheme:js/jquery.matchHeight/jquery.matchHeight-min.js')) }}
         {{ pageAddAsset('javascript', asset('magnific-popup/jquery.magnific-popup.min.js')) }}
