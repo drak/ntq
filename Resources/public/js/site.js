@@ -1,8 +1,8 @@
 (function($) {
     function updateExternalLinks() {
-        $("a[href*='http://']:not([href*='" + location.hostname.replace('www.', '') + "'])").attr('target', '_blank');
-        $("a[href*='https://']:not([href*='" + location.hostname.replace('www.', '') + "'])").attr('target', '_blank');
+        $("a[href^='http']:not([href*='ziku.la'])").attr('target', '_blank');
         $("a[href*='https://demo.ziku.la']").attr('target', '_blank');
+        $("a[href*='https://docs.ziku.la']").attr('target', '_blank');
     }
 
     function initFactDetails() {
