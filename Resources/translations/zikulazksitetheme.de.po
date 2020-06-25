@@ -82,11 +82,11 @@ msgstr "Angemeldet als"
 msgid "Simply create individual extensions"
 msgstr "Individuelle Erweiterungen einfach erzeugen"
 
-msgid "Symfony 2 + Zikula legacy layer"
-msgstr "Symfony 2 + Zikula Legacy-Layer"
+msgid "Symfony 3 - legacy release"
+msgstr "Symfony 3 - Legacy-Release"
 
-msgid "Symfony 3 - current release"
-msgstr "Symfony 3 - aktuelles Release"
+msgid "Symfony 5 - current release"
+msgstr "Symfony 5 - aktuelles Release"
 
 msgid "Themes"
 msgstr "Themes"

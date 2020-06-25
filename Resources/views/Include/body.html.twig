@@ -17,8 +17,8 @@
     {% endif %}
     <div class="container">
         {% if currentSlug == 'downloads' %}
-            {% set currentReleaseBlocks = showblockposition('currentrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 3 - current release', 'zikulazksitetheme') ~ '</small></p>' %}
-            {% set legacyReleaseBlocks = showblockposition('legacyrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 2 + Zikula legacy layer', 'zikulazksitetheme') ~ '</small></p>' %}
+            {% set currentReleaseBlocks = showblockposition('currentrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 5 - current release', 'zikulazksitetheme') ~ '</small></p>' %}
+            {% set legacyReleaseBlocks = showblockposition('legacyrelease') ~ '<p class="download-description"><small>' ~ __('Symfony 3 - legacy release', 'zikulazksitetheme') ~ '</small></p>' %}
             {% set mostBlock %}
                 <div class="z-block z-blockposition-blockposition z-bkey-most"><div class="coremanager-button">
                     <a class="btn btn-lg btn-warning" role="button" href="https://modulestudio.de/{{ app.request.locale }}/" style="white-space: normal"><i class="fa fa-magic fa-fw fa-3x pull-left"></i> {{ __('Generate your<br />own modules', 'zikulazksitetheme')|raw }}</a>
