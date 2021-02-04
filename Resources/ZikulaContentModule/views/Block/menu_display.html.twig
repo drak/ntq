@@ -6,6 +6,9 @@
     <ul class="nav navbar-nav">
         {% for page in items if zikulacontentmodule_hasReadAccess(page) %}
             {{ include('@ZikulaContentModule/Block/pageListIncludeEntry.html.twig', {page: page, context: 'menuBlock'}) }}
+            {% if page.id == 8 %}
+                <li><a href="#uc-corner-modal-show">{{ app.request.locale == 'de' ? 'Cookie-Einstellungen' : 'Cookie settings' }}</a></li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% else %}
