@@ -25,8 +25,16 @@
                 </div></div>
                  <p class="download-description"><small>{{ __('Simply create individual extensions', 'zikulazksitetheme') }}</small></p>
             {% endset %}
-            {% set extensionsList = getGitHubRepositories() %}
-            {{ maincontent|replace({ '<p>###CURRENT_RELEASE###</p>': currentReleaseBlocks, '<p>###LEGACY_RELEASE###</p>': legacyReleaseBlocks, '<p>###MODULE_STUDIO###</p>': mostBlock, '###GITHUB_REPOSITORIES###': extensionsList })|raw }}
+            {{ maincontent|replace({
+                '<p>###CURRENT_RELEASE###</p>': currentReleaseBlocks,
+                '<p>###LEGACY_RELEASE###</p>': legacyReleaseBlocks,
+                '<p>###MODULE_STUDIO###</p>': mostBlock,
+                '<p>###GITHUB_REPOSITORIES###</p>': ghRepositories()
+            })|raw }}
+        {% elseif currentSlug == 'support' %}
+            {{ maincontent|replace({
+                '<p>###GITHUB_DISCUSSIONS###</p>': ghDiscussions()
+            })|raw }}
         {% else %}
             {{ maincontent|raw }}
         {% endif %}

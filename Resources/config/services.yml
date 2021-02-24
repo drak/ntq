@@ -1,6 +1,6 @@
 services:
-    zikula_zksite_theme.extensions_list_helper:
-        class: Zikula\ZkSiteTheme\Helper\ExtensionsListHelper
+    zikula_zksite_theme.github_integration_helper:
+        class: Zikula\ZkSiteTheme\Helper\GitHubIntegrationHelper
         arguments:
             - '@zikula_core_manager_module.client_helper'
 
@@ -8,6 +8,6 @@ services:
         class: Zikula\ZkSiteTheme\Twig\ZkSiteExtension
         arguments:
             - "@request_stack"
-            - '@zikula_zksite_theme.extensions_list_helper'
+            - '@zikula_zksite_theme.github_integration_helper'
         tags:
             - { name: twig.extension }

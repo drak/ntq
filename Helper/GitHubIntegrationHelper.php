@@ -13,7 +13,7 @@ namespace Zikula\ZkSiteTheme\Helper;
 
 use Zikula\Module\CoreManagerModule\Helper\ClientHelper;
 
-class ExtensionsListHelper
+class GitHubIntegrationHelper
 {
     protected $clientHelper;
     protected $githubClient;
@@ -32,9 +32,9 @@ class ExtensionsListHelper
      *
      * @return string Output
      */
-    public function renderGitHubRepositories($searchTerm = '')
+    public function renderRepositories($searchTerm = '')
     {
-        $repos = $this->getGitHubRepositories(strtolower($searchTerm));
+        $repos = $this->getRepositories(strtolower($searchTerm));
 
         $output = '';
         $output .= '<h3><i class="fa fa-cubes"></i> Extensions - ' . count($repos) . ' repositories found</h3>';
@@ -79,7 +79,7 @@ class ExtensionsListHelper
      *
      * @return array List of repositories
      */
-    private function getGitHubRepositories($searchTerm = '')
+    private function getRepositories($searchTerm = '')
     {
         $result = $this->loadGitHubRepositories();
 
@@ -133,19 +133,7 @@ class ExtensionsListHelper
     private function loadGitHubRepositories()
     {
         $cacheFile = 'web/uploads/github_extension_repositories.json';
-        $refetch = false;
-        if (!file_exists($cacheFile)) {
-            $refetch = true;
-        } else {
-            $compareDate = date('Y-m-d H:i:s', filectime($cacheFile));
-            $thresholdDate = new \DateTime();
-            $thresholdDate->sub(new \DateInterval('PT2H'));
-            $thresholdDate = $thresholdDate->format('Y-m-d H:i:s');
-            if ($compareDate < $thresholdDate) {
-                unlink($cacheFile);
-                $refetch = true;
-            }
-        }
+        $refetch = $this->isRefetchRequired($cacheFile);
 
         if (true !== $refetch) {
             $result = json_decode(file_get_contents($cacheFile), true);
@@ -167,5 +155,114 @@ class ExtensionsListHelper
         }
 
         return $result;
+    }
+
+    /**
+     * Returns a list of GitHub discussions.
+     *
+     * @param int $amount Amount of discussions to be shown
+     *
+     * @return string Output
+     */
+    public function renderDiscussions($amount = 10)
+    {
+        $this->githubClient = $this->clientHelper->getGitHubClient(false);
+
+        $discussions = $this->loadDiscussions();
+
+        $output = '<div class="list-group">';
+        foreach ($discussions as $discussion) {
+            $output .= '<a href="' . $discussion['url'] . '" class="list-group-item">' . $discussion['title'] . '</a>';
+        }
+        $output .= '</div>';
+
+        return $output;
+    }
+
+    /**
+     * Loads discussions list from GitHub.
+     *
+     * @return array List of discussions
+     */
+    private function loadDiscussions()
+    {
+        $cacheFile = 'web/uploads/github_discussions.json';
+        $refetch = $this->isRefetchRequired($cacheFile);
+
+        if (true !== $refetch) {
+            $result = json_decode(file_get_contents($cacheFile), true);
+        } else {
+            $this->githubClient = $this->clientHelper->getGitHubClient(false);
+
+            $query = <<<'QUERY'
+query {
+  repository(owner: "zikula", name: "core") {
+    discussions(first: 10) {
+      # type: DiscussionConnection
+      totalCount # Int!
+
+      pageInfo {
+        # type: PageInfo (from the public schema)
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+
+      edges {
+        # type: DiscussionEdge
+        cursor
+        node {
+          # type: Discussion
+          id
+        }
+      }
+
+      nodes {
+        # type: Discussion
+        id
+        createdAt
+        title
+        url
+      }
+    }
+  }
+}
+QUERY;
+
+            $result = $this->githubClient->api('graphql')->execute($query);
+
+            if (false === $result || empty($result)) {
+                $result = [];
+            }
+
+            file_put_contents($cacheFile, json_encode($result));
+        }
+
+        $result = $result['data']['repository']['discussions']['nodes'] ?? [];
+
+        return $result;
+    }
+
+    /**
+     * @return bool
+     */
+    private function isRefetchRequired($cacheFile)
+    {
+        $refetch = false;
+        if (!file_exists($cacheFile)) {
+            $refetch = true;
+        } else {
+            $compareDate = date('Y-m-d H:i:s', filectime($cacheFile));
+            $thresholdDate = new \DateTime();
+            $thresholdDate->sub(new \DateInterval('PT2H'));
+            $thresholdDate = $thresholdDate->format('Y-m-d H:i:s');
+            if ($compareDate < $thresholdDate) {
+                unlink($cacheFile);
+                $refetch = true;
+            }
+        }
+
+        return $refetch;
     }
 }
